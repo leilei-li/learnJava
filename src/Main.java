@@ -1,14 +1,13 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Integer> a = new ArrayList<Integer>();
-        for (int i = 0; i < 10; i++) {
-            a.add(i);
-        }
-        for (int i = 0; i < a.size(); i++) {
-            System.out.print(a.get(i) + " ");
-        }
+        JFrame frame = new JFrame();
+        JButton jButton= new JButton("click me");
+        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+        frame.getContentPane().add(jButton);
+        frame.setSize(300,300);
+        frame.setVisible(true);
+
     }
 }
