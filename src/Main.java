@@ -1,13 +1,12 @@
-import javax.swing.*;
-
 public class Main {
     public static void main(String[] args) {
-        JFrame frame = new JFrame();
-        JButton jButton= new JButton("click me");
-        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
-        frame.getContentPane().add(jButton);
-        frame.setSize(300,300);
-        frame.setVisible(true);
+        Myrunnable runnable = new Myrunnable();
+        Thread t1 = new Thread(runnable);
+        Thread t2 = new Thread(runnable);
+        t1.setName("t1");
+        t1.start();
+        t2.setName("t2");
+        t2.start();
 
     }
 }
