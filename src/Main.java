@@ -7,6 +7,7 @@ public class Main {
         Sort sort = new Sort();
         //sort.QuickSort(num, 0, 9);
         //sort.BubbleSort(num);
-        sort.InsertSort(num);
+        //sort.InsertSort(num);
+        //sort.SelectSort(num);
     }
 }

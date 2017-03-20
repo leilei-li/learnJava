@@ -61,4 +61,29 @@ public class Sort {
 
         }
     }
+
+    public void SelectSort(int[] num) {
+        int[] numSorted = new int[num.length];
+        int pos = 0;
+        int p = 0;
+        int n = num[0];
+        while (pos < 10) {
+            for (int i = 0; i < num.length - 1; i++) {
+                if (n > num[i]) {
+                    n = num[i];
+                    p = i;
+                }
+            }
+            numSorted[pos] = n;
+            num[p] = 99999;
+            p = 0;
+            n = num[pos];
+            pos++;
+        }
+        for (int i = 0; i < num.length; i++) {
+            System.out.print(numSorted[i] + " ");
+
+        }
+
+    }
 }
