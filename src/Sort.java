@@ -46,4 +46,19 @@ public class Sort {
             System.out.print(num[i] + " ");
         }
     }
+
+    public void InsertSort(int[] num) {
+        for (int i = 1; i < num.length; i++)
+            for (int j = i; j > 0; j--) {
+                if (num[j] < num[j - 1]) {
+                    int temp = num[j];
+                    num[j] = num[j - 1];
+                    num[j - 1] = temp;
+                }
+            }
+        for (int i = 0; i < num.length; i++) {
+            System.out.print(num[i] + " ");
+
+        }
+    }
 }
