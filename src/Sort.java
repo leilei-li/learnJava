@@ -82,8 +82,55 @@ public class Sort {
         }
         for (int i = 0; i < num.length; i++) {
             System.out.print(numSorted[i] + " ");
+        }
+    }
 
+    public void HeapSort(int[] num) {
+        if (num == null || num.length <= 1) {
+            return;
+        }
+        buildMaxHeap(num);
+        for (int i = num.length - 1; i >= 1; i--) {
+            int temp = num[0];
+            num[0] = num[i];
+            num[i] = temp;
+            maxHeap(num, i, 0);
+        }
+        for (int i = 0; i < num.length; i++) {
+            System.out.print(num[i] + " ");
+        }
+    }
+
+    private void buildMaxHeap(int[] num) {
+        if (num == null || num.length <= 1) {
+            return;
         }
 
+        int half = num.length / 2;
+        for (int i = half; i >= 0; i--) {
+            maxHeap(num, num.length, i);
+        }
+    }
+
+    private void maxHeap(int[] num, int heapSize, int index) {
+        int left = index * 2 + 1;
+        int right = index * 2 + 2;
+
+        int largest = index;
+        if (left < heapSize && num[left] > num[index]) {
+            largest = left;
+        }
+
+        if (right < heapSize && num[right] > num[largest]) {
+            largest = right;
+        }
+
+        if (index != largest) {
+
+            int temp = num[index];
+            num[index] = num[largest];
+            num[largest] = temp;
+            maxHeap(num, heapSize, largest);
+        }
     }
 }
