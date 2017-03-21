@@ -133,4 +133,22 @@ public class Sort {
             maxHeap(num, heapSize, largest);
         }
     }
+
+    public void ShellSort(int[] num) {
+        int d = num.length;
+        while (d != 1) {
+            d = d / 2;
+            for (int i = 0; i < num.length; i++)
+                for (int j = i; j + d < num.length; j = j + d) {//分组后从i开始，每d增量拿出来一次
+                    if (num[j] > num[j + d]) {
+                        int temp = num[j + d];
+                        num[j + d] = num[j];
+                        num[j] = temp;
+                    }
+                }
+        }
+        for (int i = 0; i < num.length; i++) {
+            System.out.print(num[i] + " ");
+        }
+    }
 }

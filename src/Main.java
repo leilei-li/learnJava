@@ -9,6 +9,8 @@ public class Main {
         //sort.BubbleSort(num);
         //sort.InsertSort(num);
         //sort.SelectSort(num);
-        sort.HeapSort(num);
+        //sort.HeapSort(num);
+        sort.ShellSort(num);
+
     }
 }
