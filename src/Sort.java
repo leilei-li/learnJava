@@ -1,8 +1,18 @@
+import com.sun.scenario.effect.Merge;
+
 /**
  * Created by lileilei on 2017/3/17.
  */
 public class Sort {
-    public void QuickSort(int[] num, int low, int high) {
+
+    public void QuickSort(int[] num) {
+        QuickSort1(num, 0, num.length - 1);
+        for (int i = 0; i < num.length; i++) {
+            System.out.print(num[i] + " ");
+        }
+    }
+
+    private void QuickSort1(int[] num, int low, int high) {
         int l = low;
         int h = high;
         int povit = num[low];
@@ -25,12 +35,8 @@ public class Sort {
                 h--;
             }
         }
-        for (int i = 0; i < num.length; i++) {
-            System.out.print(num[i] + " ");
-        }
-        System.out.print("\n");
-        if (l > low) QuickSort(num, low, l - 1);
-        if (h < high) QuickSort(num, l + 1, high);
+        if (l > low) QuickSort1(num, low, l - 1);
+        if (h < high) QuickSort1(num, l + 1, high);
     }//quick sort
 
     public void BubbleSort(int[] num) {
@@ -149,6 +155,47 @@ public class Sort {
         }
         for (int i = 0; i < num.length; i++) {
             System.out.print(num[i] + " ");
+        }
+    }
+
+    public void MergeSort(int[] num) {
+        MergeSort1(num, 0, num.length - 1);
+        for (int i = 0; i < num.length; i++) {
+            System.out.print(num[i] + " ");
+        }
+
+    }
+
+    private void MergeSort1(int[] num, int low, int high) {
+        int mid = (low + high) / 2;
+        if (low < high) {
+            MergeSort1(num, low, mid);
+            MergeSort1(num, mid + 1, high);
+            merge(num, low, mid, high);
+        }
+
+    }
+
+    private void merge(int[] num, int low, int mid, int high) {
+        int[] temp = new int[high - low + 1];
+        int i = low;
+        int j = mid + 1;
+        int k = 0;
+        while (i <= mid && j <= high) {
+            if (num[i] < num[j]) {
+                temp[k++] = num[i++];
+            } else {
+                temp[k++] = num[j++];
+            }
+        }
+        while (i <= mid) {
+            temp[k++] = num[i++];
+        }
+        while (j <= high) {
+            temp[k++] = num[j++];
+        }
+        for (int k2 = 0; k2 < temp.length; k2++) {
+            num[k2 + low] = temp[k2];
         }
     }
 }
