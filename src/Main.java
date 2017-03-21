@@ -12,6 +12,7 @@ public class Main {
         //sort.HeapSort(num);
         //sort.ShellSort(num);
         //sort.MergeSort(num);
+        sort.CountSort(num);
 
     }
 }

@@ -198,4 +198,33 @@ public class Sort {
             num[k2 + low] = temp[k2];
         }
     }
+
+    public void CountSort(int[] num) {
+        int max, min;
+        max = min = num[0];
+        int[] numSorted = new int[num.length];
+        for (int i = 0; i < num.length; i++) {
+            if (max < num[i]) {
+                max = num[i];
+            }
+            if (min > num[i]) {
+                min = num[i];
+            }
+        }//找出数组中最大最小值，便于建立辅助数组
+        int d = max - min + 1;
+        int[] c = new int[d];//辅助数组
+        for (int i = 0; i < num.length; ++i) {
+            c[num[i] - min] = c[num[i] - min] + 1;
+        }
+        for (int i = 1; i < c.length; ++i) {
+            c[i] = c[i] + c[i - 1];
+        }
+        for (int i = num.length - 1; i >= 0; --i) {
+            c[num[i] - min]=c[num[i] - min]-1;
+            numSorted[c[num[i] - min]] = num[i];//按存取的方式取出c的元素
+        }
+        for (int i = 0; i < num.length; i++) {
+            System.out.print(numSorted[i] + " ");
+        }
+    }
 }
