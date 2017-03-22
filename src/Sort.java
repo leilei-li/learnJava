@@ -4,12 +4,16 @@ import com.sun.scenario.effect.Merge;
  * Created by lileilei on 2017/3/17.
  */
 public class Sort {
-
-    public void QuickSort(int[] num) {
-        QuickSort1(num, 0, num.length - 1);
+    private void printNum(int[] num) {
         for (int i = 0; i < num.length; i++) {
             System.out.print(num[i] + " ");
         }
+        System.out.println();
+    }
+
+    public void QuickSort(int[] num) {
+        QuickSort1(num, 0, num.length - 1);
+    printNum(num);
     }
 
     private void QuickSort1(int[] num, int low, int high) {
@@ -48,9 +52,7 @@ public class Sort {
                     num[j] = temp;
                 }
             }
-        for (int i = 0; i < num.length; i++) {
-            System.out.print(num[i] + " ");
-        }
+        printNum(num);
     }
 
     public void InsertSort(int[] num) {
@@ -62,10 +64,7 @@ public class Sort {
                     num[j - 1] = temp;
                 }
             }
-        for (int i = 0; i < num.length; i++) {
-            System.out.print(num[i] + " ");
-
-        }
+        printNum(num);
     }
 
     public void SelectSort(int[] num) {
@@ -86,9 +85,7 @@ public class Sort {
             n = num[pos];
             pos++;
         }
-        for (int i = 0; i < num.length; i++) {
-            System.out.print(numSorted[i] + " ");
-        }
+        printNum(numSorted);
     }
 
     public void HeapSort(int[] num) {
@@ -102,9 +99,7 @@ public class Sort {
             num[i] = temp;
             maxHeap(num, i, 0);
         }
-        for (int i = 0; i < num.length; i++) {
-            System.out.print(num[i] + " ");
-        }
+        printNum(num);
     }
 
     private void buildMaxHeap(int[] num) {
@@ -153,16 +148,12 @@ public class Sort {
                     }
                 }
         }
-        for (int i = 0; i < num.length; i++) {
-            System.out.print(num[i] + " ");
-        }
+        printNum(num);
     }
 
     public void MergeSort(int[] num) {
         MergeSort1(num, 0, num.length - 1);
-        for (int i = 0; i < num.length; i++) {
-            System.out.print(num[i] + " ");
-        }
+        printNum(num);
 
     }
 
@@ -220,11 +211,9 @@ public class Sort {
             c[i] = c[i] + c[i - 1];
         }
         for (int i = num.length - 1; i >= 0; --i) {
-            c[num[i] - min]=c[num[i] - min]-1;
+            c[num[i] - min] = c[num[i] - min] - 1;
             numSorted[c[num[i] - min]] = num[i];//按存取的方式取出c的元素
         }
-        for (int i = 0; i < num.length; i++) {
-            System.out.print(numSorted[i] + " ");
-        }
+        printNum(numSorted);
     }
 }
