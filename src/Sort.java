@@ -1,4 +1,5 @@
-import com.sun.scenario.effect.Merge;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by lileilei on 2017/3/17.
@@ -13,7 +14,7 @@ public class Sort {
 
     public void QuickSort(int[] num) {
         QuickSort1(num, 0, num.length - 1);
-    printNum(num);
+        printNum(num);
     }
 
     private void QuickSort1(int[] num, int low, int high) {
@@ -216,4 +217,36 @@ public class Sort {
         }
         printNum(numSorted);
     }
+
+    public void BucketSort(int[] num) {//映射函数为f(x)=k/10
+        int buckets = 10;//建造十个桶
+        ArrayList<ArrayList<Integer>> bucketNum = new ArrayList<ArrayList<Integer>>();//建立一个桶的索引
+        for (int i = 0; i < buckets; i++) {
+            bucketNum.add(new ArrayList<Integer>());
+        }//初始化十个桶的索引
+        for (int i = 0; i < num.length; i++) {
+            int pos = num[i] / 10;//通过映射函数选择放在哪个桶
+            bucketNum.get(pos).add(num[i]);
+        }
+        for (int i = 0; i < buckets; i++) {
+            if (bucketNum.get(i).isEmpty()) {
+                continue;
+            } else {
+                bucketNum.get(i).sort(Integer::compareTo);//这里使用了Arraylist自带的sort方式，可以自己写排序算法
+            }
+
+        }
+        for (int i = 0; i < buckets; i++) {
+            if (bucketNum.get(i).isEmpty()) {
+                continue;
+            } else {
+                for (int j = 0; j < bucketNum.get(i).size(); j++) {
+                    System.out.print(bucketNum.get(i).get(j) + " ");
+                }
+            }
+        }
+        System.out.println();
+    }
+
+
 }
