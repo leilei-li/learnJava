@@ -4,87 +4,82 @@ import java.util.*;
  * Created by lileilei on 2017/3/23.
  */
 public class Search {
-
+    private Node root=null;
     private class Node {
-        public Node root;
-        public Node leftChild;
-        public Node rightChild;
-        int data;
+        public Node parent=null;
+        public Node leftChild=null;
+        public Node rightChild=null;
+        int key;
 
-        Node(int newData) {
-            leftChild = null;
-            rightChild = null;
-            data = newData;
+        public Node(int data) {
+            this.key=data;
         }
     }
-
-    private Node CreatBinaryTree(int[] array) {
-        LinkedList<Node> nodeList = new LinkedList<Node>();
-        // 将一个数组的值依次转换为Node节点
-        for (int nodeIndex = 0; nodeIndex < array.length; nodeIndex++) {
-            nodeList.add(new Node(array[nodeIndex]));
+    private void buildTree(int[] datas) {
+        for (int i = 0; i < datas.length; i++) {
+            Node node=new Node(datas[i]);
+            insertNode(node);
         }
-        // 对前lastParentIndex-1个父节点按照父节点与孩子节点的数字关系建立二叉树
-        for (int parentIndex = 0; parentIndex < array.length / 2 - 1; parentIndex++) {
-            // 左孩子
-            nodeList.get(parentIndex).leftChild = nodeList
-                    .get(parentIndex * 2 + 1);
-            // 右孩子
-            nodeList.get(parentIndex).rightChild = nodeList
-                    .get(parentIndex * 2 + 2);
+    }
+    private void insertNode(Node node) {    //插入结点
+        Node next=this.root;
+        Node cur=null;    //用来保存当前结点
+        while(next!=null){    //当到达叶子结点时，确认位置！
+            cur=next;
+            if(node.key>=cur.key){
+                next=next.rightChild;
+            }else{
+                next=next.leftChild;
+            }
         }
-        // 最后一个父节点:因为最后一个父节点可能没有右孩子，所以单独拿出来处理
-        int lastParentIndex = array.length / 2 - 1;
-        // 左孩子
-        nodeList.get(lastParentIndex).leftChild = nodeList
-                .get(lastParentIndex * 2 + 1);
-        // 右孩子,如果数组的长度为奇数才建立右孩子
-        if (array.length % 2 == 1) {
-            nodeList.get(lastParentIndex).rightChild = nodeList
-                    .get(lastParentIndex * 2 + 2);
+        node.parent=cur;    //插入该结点！
+        if(cur==null){
+            this.root=node;  //该树为空树，所以这个是根节点
+        }else if(node.key>=cur.key){
+            cur.rightChild=node;
+        }else{
+            cur.leftChild=node;
         }
-        return nodeList.get(0);
     }
-
-    private void preOrderTraverse(Node node) {
-        if (node == null)
-            return;
-        System.out.print(node.data + " ");
-        preOrderTraverse(node.leftChild);
-        preOrderTraverse(node.rightChild);
+    private Node searchNode(Node node){    //private供内部调用，��索结点
+        if(node==null){
+            System.out.println("输入为空，查找失败！");
+        }else{
+            if(root==null){
+                System.out.println("该树为空树！");
+            }else{                        //开始查找
+                boolean isFound=false;
+                Node x=root;
+                Node y=null;
+                while(!isFound&&x!=null){    //当查到或者到了叶子节点还没查到时，终结！
+                    y=x;
+                    if(node.key==x.key){
+                        isFound=true;
+                    }else{                    //通过比较大小往下面查找
+                        if(node.key>x.key){
+                            x=x.rightChild;
+                        }else{
+                            x=x.leftChild;
+                        }
+                    }
+                }
+                if(isFound){    //没找到的话，在最后返回null
+                    return y;
+                }
+            }
+        }
+        return null;
     }
-
-    private static void inOrderTraverse(Node node) {
-        if (node == null)
-            return;
-        inOrderTraverse(node.leftChild);
-        System.out.print(node.data + " ");
-        inOrderTraverse(node.rightChild);
+    public void BinaryTreeSearch(int[] data,int target){
+        buildTree(data);//建立二叉搜索树
+        System.out.println("The number you want to find is "+target);
+        Node node;
+        if((node=searchNode(new Node(target)))==null){
+            System.out.println("The num does not exist！");
+        }else{
+            System.out.println("We find "+node.key+" in this tree successfully！");
+        }
     }
-
-    private static void postOrderTraverse(Node node) {
-        if (node == null)
-            return;
-        postOrderTraverse(node.leftChild);
-        postOrderTraverse(node.rightChild);
-        System.out.print(node.data + " ");
-    }
-
-    public void BinaryTreeSearch(int[] num) {
-        Node root = CreatBinaryTree(num);
-
-        System.out.println("先序遍历：");
-        preOrderTraverse(root);
-        System.out.println();
-
-        System.out.println("中序遍历：");
-        inOrderTraverse(root);
-        System.out.println();
-
-        System.out.println("后序遍历：");
-        postOrderTraverse(root);
-    }
-
 
     public void OrderSearch(int[] num, int target) {
         int pos = -1;

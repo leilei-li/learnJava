@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        int[] num = new int[]{1, 10, 2, 9, 3, 8, 4, 7, 5, 6};
+        int[] num = new int[]{1,2,3};
 //        Sort sort = new Sort();
 //        sort.QuickSort(num);
 //        sort.BubbleSort(num);
@@ -15,6 +15,7 @@ public class Main {
         Search search = new Search();
 //        search.OrderSearch(num, 3);
 //        search.BinarySearch(num, 3);
-        search.BinaryTreeSearch(num);
+        search.BinaryTreeSearch(num,3);
+
     }
 }
