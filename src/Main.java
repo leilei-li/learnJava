@@ -13,7 +13,8 @@ public class Main {
 //        sort.BucketSort(num);
 
         Search search = new Search();
-        search.OrderSearch(num, 3);
+//        search.OrderSearch(num, 3);
+        search.BinarySearch(num, 3);
 
     }
 }
