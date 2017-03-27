@@ -16,6 +16,7 @@ public class Main {
 //        search.OrderSearch(num, 3);
 //        search.BinarySearch(num, 3);
         search.BinaryTreeSearch(num, 3);
+        
 
     }
 }
