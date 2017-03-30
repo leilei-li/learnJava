@@ -11,12 +11,12 @@ public class Sort {
         System.out.println();
     }
 
-    public void QuickSort(int[] num) {
-        QuickSort1(num, 0, num.length - 1);
+    public void quickSort(int[] num) {
+        quickSort1(num, 0, num.length - 1);
         printNum(num);
     }
 
-    private void QuickSort1(int[] num, int low, int high) {
+    private void quickSort1(int[] num, int low, int high) {
         int l = low;
         int h = high;
         int povit = num[low];
@@ -39,11 +39,11 @@ public class Sort {
                 h--;
             }
         }
-        if (l > low) QuickSort1(num, low, l - 1);
-        if (h < high) QuickSort1(num, l + 1, high);
+        if (l > low) quickSort1(num, low, l - 1);
+        if (h < high) quickSort1(num, l + 1, high);
     }//quick sort
 
-    public void BubbleSort(int[] num) {
+    public void bubbleSort(int[] num) {
         for (int i = 0; i < num.length; i++)
             for (int j = 0; j < num.length; j++) {
                 if (num[i] < num[j]) {
@@ -55,7 +55,7 @@ public class Sort {
         printNum(num);
     }
 
-    public void InsertSort(int[] num) {
+    public void insertSort(int[] num) {
         for (int i = 1; i < num.length; i++)
             for (int j = i; j > 0; j--) {
                 if (num[j] < num[j - 1]) {
@@ -67,7 +67,7 @@ public class Sort {
         printNum(num);
     }
 
-    public void SelectSort(int[] num) {
+    public void selectSort(int[] num) {
         int[] numSorted = new int[num.length];
         int pos = 0;
         int p = 0;
@@ -88,7 +88,7 @@ public class Sort {
         printNum(numSorted);
     }
 
-    public void HeapSort(int[] num) {
+    public void heapSort(int[] num) {
         if (num == null || num.length <= 1) {
             return;
         }
@@ -135,7 +135,7 @@ public class Sort {
         }
     }
 
-    public void ShellSort(int[] num) {
+    public void shellSort(int[] num) {
         int d = num.length;
         while (d != 1) {
             d = d / 2;
@@ -151,17 +151,17 @@ public class Sort {
         printNum(num);
     }
 
-    public void MergeSort(int[] num) {
-        MergeSort1(num, 0, num.length - 1);
+    public void mergeSort(int[] num) {
+        mergesort1(num, 0, num.length - 1);
         printNum(num);
 
     }
 
-    private void MergeSort1(int[] num, int low, int high) {
+    private void mergesort1(int[] num, int low, int high) {
         int mid = (low + high) / 2;
         if (low < high) {
-            MergeSort1(num, low, mid);
-            MergeSort1(num, mid + 1, high);
+            mergesort1(num, low, mid);
+            mergesort1(num, mid + 1, high);
             merge(num, low, mid, high);
         }
 
@@ -190,7 +190,7 @@ public class Sort {
         }
     }
 
-    public void CountSort(int[] num) {
+    public void countSort(int[] num) {
         int max, min;
         max = min = num[0];
         int[] numSorted = new int[num.length];
@@ -217,7 +217,7 @@ public class Sort {
         printNum(numSorted);
     }
 
-    public void BucketSort(int[] num) {//映射函数为f(x)=k/10
+    public void bucketSort(int[] num) {//映射函数为f(x)=k/10
         int buckets = 10;//建造十个桶
         ArrayList<ArrayList<Integer>> bucketNum = new ArrayList<ArrayList<Integer>>();//建立一个桶的索引
         for (int i = 0; i < buckets; i++) {

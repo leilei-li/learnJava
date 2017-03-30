@@ -2,20 +2,20 @@ public class Main {
     public static void main(String[] args) {
         int[] num = new int[]{1, 10, 2, 9, 3, 8, 4, 7, 5, 6};
 //        Sort sort = new Sort();
-//        sort.QuickSort(num);
-//        sort.BubbleSort(num);
-//        sort.InsertSort(num);
-//        sort.SelectSort(num);
-//        sort.HeapSort(num);
-//        sort.ShellSort(num);
-//        sort.MergeSort(num);
-//        sort.CountSort(num);
-//        sort.BucketSort(num);
+//        sort.quickSort(num);
+//        sort.bubbleSort(num);
+//        sort.insertSort(num);
+//        sort.selectSort(num);
+//        sort.heapSort(num);
+//        sort.shellSort(num);
+//        sort.mergeSort(num);
+//        sort.countSort(num);
+//        sort.bucketSort(num);
 
         Search search = new Search();
-//        search.OrderSearch(num, 3);
-//        search.BinarySearch(num, 3);
-        search.BinaryTreeSearch(num, 3);
+//        search.orderSearch(num, 3);
+//        search.binarySearch(num, 3);
+        search.binaryTreeSearch(num, 3);
         
 
     }

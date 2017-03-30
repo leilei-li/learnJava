@@ -75,7 +75,7 @@ public class Search {
         return null;
     }
 
-    public void BinaryTreeSearch(int[] data, int target) {
+    public void binaryTreeSearch(int[] data, int target) {
         buildTree(data);//建立二叉搜索树
         System.out.println("The number you want to find is " + target);
         Node node;
@@ -86,7 +86,7 @@ public class Search {
         }
     }
 
-    public void OrderSearch(int[] num, int target) {
+    public void orderSearch(int[] num, int target) {
         int pos = -1;
         for (int i = 0; i < num.length; i++) {
             if (num[i] == target) {
@@ -109,7 +109,7 @@ public class Search {
         return num;
     }
 
-    public void BinarySearch(int[] n, int target) {
+    public void binarySearch(int[] n, int target) {
         int[] num = initBinarySearch(n);
         int low = 0;
         int high = num.length - 1;
