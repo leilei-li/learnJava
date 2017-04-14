@@ -16,7 +16,7 @@ public class Main {
 //        search.orderSearch(num, 3);
 //        search.binarySearch(num, 3);
         search.binaryTreeSearch(num, 3);
-        
+
 
     }
 }
