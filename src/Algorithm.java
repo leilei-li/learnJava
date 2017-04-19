@@ -54,10 +54,21 @@ public class Algorithm {
         } else {
             int profit = 0;
             for (int i = 1; i <= l; i++) {
-                profit=Math.max(profit,price[i]+memoizedCutRodAux(price,r,l-i));
+                profit = Math.max(profit, price[i] + memoizedCutRodAux(price, r, l - i));
             }
-            r[l]=profit;//保存最优解
+            r[l] = profit;//保存最优解
             return profit;
         }
+    }
+
+    public int bottomUpCutRod(int price[], int r[], int l) {
+        for (int i = 1; i <= l; i++) {
+            int profit = 0;
+            for (int j = 1; j <= i; j++) {
+                profit = Math.max(profit, price[j] + r[i - j]);
+            }
+            r[i] = profit;
+        }
+        return r[l];
     }
 }

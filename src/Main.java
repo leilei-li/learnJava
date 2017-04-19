@@ -26,6 +26,7 @@ public class Main {
 //        }
         for (int i = 1; i < 11; i++) {
             System.out.println(algorithm.memoizedCutRodAux(price, r, i));
+            System.out.println(algorithm.bottomUpCutRod(price, r, i));
         }
 
     }
