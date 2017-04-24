@@ -3,6 +3,8 @@ public class Main {
         int[] num = new int[]{1, 10, 2, 9, 3, 8, 4, 7, 5, 6};
         int[] price = new int[]{0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30};
         int[] r = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        String[] X = new String[]{"A", "B", "C", "B", "D", "A", "B"};
+        String[] Y = new String[]{"B", "D", "C", "A", "B", "A"};
 //        Sort sort = new Sort();
 //        sort.quickSort(num);
 //        sort.bubbleSort(num);
@@ -24,10 +26,10 @@ public class Main {
 //        for (int i = 0; i < result.length; i++) {
 //            System.out.print(result[i] + " ");
 //        }
-        for (int i = 1; i < 11; i++) {
-            System.out.println(algorithm.memoizedCutRodAux(price, r, i));
-            System.out.println(algorithm.bottomUpCutRod(price, r, i));
-        }
-
+//        for (int i = 1; i < 11; i++) {
+//            System.out.println(algorithm.memoizedCutRodAux(price, r, i));
+//            System.out.println(algorithm.bottomUpCutRod(price, r, i));
+//        }
+        algorithm.getLCS(X, Y);
     }
 }

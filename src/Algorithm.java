@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Created by lileilei on 2017/4/14.
  */
@@ -70,5 +72,49 @@ public class Algorithm {
             r[i] = profit;
         }
         return r[l];
+    }
+
+    private int[][] LCSLength(String[] X, String[] Y) {
+        ArrayList<ArrayList> result = new ArrayList<ArrayList>();
+        int m = X.length;
+        int n = Y.length;
+        int[][] c = new int[m + 1][n + 1];
+        int[][] b = new int[m + 1][n + 1];
+        for (int i = 1; i < m; i++)
+            for (int j = 0; j < n + 1; j++) {
+                c[i][j] = 0;
+            }
+        for (int i = 1; i <= m; i++)
+            for (int j = 1; j <= n; j++) {
+                if (X[i - 1] == Y[j - 1]) {//为了照顾c的序号，所以所有的X,Y均-1了
+                    c[i][j] = c[i - 1][j - 1] + 1;
+                    b[i][j] = 1;//代表左上箭头
+                } else if (c[i - 1][j] >= c[i][j - 1]) {
+                    c[i][j] = c[i - 1][j];
+                    b[i][j] = 2;//代表向上箭头
+                } else {
+                    c[i][j] = c[i][j - 1];
+                    b[i][j] = 3;//代表向左箭头
+                }
+            }
+        return b;
+    }
+
+    private void printLCS(int[][] b, String[] X, int i, int j) {
+        if (i != 0 && j != 0) {
+            if (b[i][j] == 1) {
+                printLCS(b, X, i - 1, j - 1);
+                System.out.print(X[i-1]);
+            } else if (b[i][j] == 2) {
+                printLCS(b, X, i - 1, j);
+            } else {
+                printLCS(b, X, i, j - 1);
+            }
+        }
+    }
+
+    public void getLCS(String[] X, String[] Y) {
+        int[][] b = LCSLength(X, Y);
+        printLCS(b, X, X.length, Y.length);
     }
 }
