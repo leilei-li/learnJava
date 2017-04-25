@@ -104,7 +104,7 @@ public class Algorithm {
         if (i != 0 && j != 0) {
             if (b[i][j] == 1) {
                 printLCS(b, X, i - 1, j - 1);
-                System.out.print(X[i-1]);
+                System.out.print(X[i - 1]);
             } else if (b[i][j] == 2) {
                 printLCS(b, X, i - 1, j);
             } else {
@@ -117,4 +117,25 @@ public class Algorithm {
         int[][] b = LCSLength(X, Y);
         printLCS(b, X, X.length, Y.length);
     }
+
+    public void greedySelector(int[] s, int[] f) {
+        int N = s.length;//为了配合算法，下标都是从1开始
+        int[] A = new int[N];
+        int j = 1;
+        A[j] = 1;//记录最近加入A的活动j
+        for (int i = 2; i < N; i++) {
+            if (s[i] >= f[j]) {//可以兼容
+                A[i] = 1;
+                j = i;//下一个活动
+            } else {
+                A[i] = 0;
+            }
+        }
+        for (int i = 1; i < N; i++) {
+            if (A[i] == 1) {
+                System.out.print(i + " ");
+            }
+        }
+    }
+
 }
